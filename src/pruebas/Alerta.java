@@ -87,5 +87,28 @@ public class Alerta {
 		this.fecha_fin = fecha_fin;
 		return true;
 	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + Arrays.hashCode(localizacion);
+		result = prime * result + Objects.hash(ID, alarma, centro, estado, fecha_fin, fecha_inicio);
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Alerta other = (Alerta) obj;
+		return ID == other.ID && Objects.equals(alarma, other.alarma) && Objects.equals(centro, other.centro)
+				&& Objects.equals(estado, other.estado) && Objects.equals(fecha_fin, other.fecha_fin)
+				&& Objects.equals(fecha_inicio, other.fecha_inicio) && Arrays.equals(localizacion, other.localizacion);
+	}
 	
 }
