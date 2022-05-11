@@ -12,7 +12,9 @@ class GestorAlarmasTest {
 	void testInformarAlarma() {
 		Float[] pos = {12.3f, 12.4f};
 		Alarma alarm = new Alarma(1, "Incendio");
-		Alerta al=new Alerta("Urgente", 1, pos, "ETSE", new Date(), alarm);;
+		Alerta alert=new Alerta("Urgente", 1, pos, "ETSE", new Date(), alarm);
+		GestorAlarmas GAS = new GestorAlarmas();
+		assertEquals(alert,GAS.informarAlarma(alert),"Error al informar alarma.");
 	}
 
 }
