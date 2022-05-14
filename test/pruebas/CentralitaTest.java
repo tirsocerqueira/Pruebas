@@ -2,6 +2,7 @@ package pruebas;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.time.Duration;
 import java.util.Date;
 
 import org.junit.jupiter.api.*;
@@ -23,6 +24,21 @@ class CentralitaTest {
 		Centralita cen = new Centralita(GAS);
 		assertTrue(cen.notificarAlerta(null),"Error al notificar una alerta nula.");
 	}
-	
+	@Nested
+	@DisplayName("Pruebas de rendimiento [NFR-0002]")
+	class Rendimiento{
+		@Test 
+		void limiteTestNotificarAlertaRendimiento1() {
+			assertTimeoutPreemptively(Duration.ofSeconds(2), ()->{
+				testNotificarAlerta1();
+			});
+		}
+		@Test
+		void limiteTestNotificarAlertaRendimiento2() {
+			assertTimeoutPreemptively(Duration.ofSeconds(2), ()->{
+				testNotificarAlerta2();
+			});
+		}
+	}
 
 }
